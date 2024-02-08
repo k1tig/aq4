@@ -1,0 +1,22 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+
+    {% block content %}
+        <h1>Add Scape</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Submit">
+        </form>
+    {% endblock %}
+
+    {% block scripts %}
+        <script>
+            $("#id_plants").select2();
+            $("#id_fish").select2();
+            $("#id_invertebrate").select2();
+            $("#id_hardscape").select2();
+            
+        </script>
+    {% endblock %}

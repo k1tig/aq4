@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+{% load crispy_forms_tags %}
+
+    {% block content %}
+        <h1>Edit Scape</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Save">
+        </form>
+    {% endblock %}
+
+    {% block scripts %}
+    <script>
+        $("#id_plants").select2();
+    </script>
+    {% endblock %}

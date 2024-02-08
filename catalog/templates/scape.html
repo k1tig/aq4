@@ -1,0 +1,30 @@
+{% extends 'base_generic.html' %}
+
+
+    {% block content %}
+
+        <h2>Scape</h2>
+        <br>
+
+        <h3>Scape: {{ scape.scape_name }}</h3>
+        <h3>Owner: {{ scape.owner }}</h3>
+        
+
+        <div>
+            <h3>Tank Details</h3>
+            <br><br>
+            <h4>Plants:</h4> 
+            <ul>
+                {% for i in scape.plants.all %} 
+                <li>{{i}}</li>  
+                {% endfor %}
+            </ul>
+        </div>
+        
+            
+            
+            
+        
+    {% endblock %}
+
+ 
