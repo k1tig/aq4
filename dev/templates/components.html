@@ -23,50 +23,79 @@
             </div>
             <br>
             <div class="scape_section">
-                <a href="#">Feed</a>
-                <a href="#">Info</a>
-                <a href="#">Gallery</a>
+                <button onclick="openTab('ScapeFeed')">Feed</button>
+                <button onclick="openTab('ScapeInfo')">Info</button>
+                <button onclick="openTab('ScapeGallery')">Gallery</button>
             </div>
             <br>
-            <div id="scape_info">
+
+
+            <div id="ScapeFeed" class="scape_tab">
+                <h1>Scape Feed</h1>
+
+                <section id="feed_body">
+                    <div class="feed_post">
+                        <div>
+                            <h4>01/28/24 - 10:37pm</h4>
+                        </div>
+                        <div><img src="/dev/media/pic_1.jpg"></div>
+                        <div><img src="/dev/media/pic_2.jpg" alt=""></div>
+                        <div>
+                            <p>
+                                Finally changed the foreground on the iwagumi. Diatoms and Godzilla were pissing all over the soild which caused the kh to change to No4. I'm hoping with enough ADA excel we will be able to beat this meet.
+                            </p>
+                        </div>
+                        <div>
+                            <p>Change Log: Add: Pogostemon Helferi, Update: General, Remove: S. Repens</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="ScapeInfo" class="scape_tab" style="display: none;">
                 <div id="equipment">
-                    <div id="box_border">
-                        <div class="box_title"> <h4>Size:</h4></div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Size</h4></div>
                         <div class="box_item"> <p>60P</p></div>
                     </div>
-                    <div id="box_border">
-                        <div class="box_title"> <h4>Size:</h4></div>
-                        <div class="box_item"> <p>60P</p></div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Volume</h4></div>
+                        <div class="box_item"> <p>66L</p></div>
                     </div>
-                    <div id="box_border">
-                        <div class="box_title"> <h4>Size:</h4></div>
-                        <div class="box_item"> <p>60P</p></div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Lighting</h4></div>
+                        <div class="box_item"> <p>Chihiros WRGB2</p></div>
                     </div>
-                    <div id="box_border">
-                        <div class="box_title"> <h4>Size:</h4></div>
-                        <div class="box_item"> <p>60P</p></div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Filtration</h4></div>
+                        <div class="box_item"> <p>Oase Biomaster 350</p></div>
                     </div>
-                    <div id="box_border">
-                        <div class="box_title"> <h4>Size:</h4></div>
-                        <div class="box_item"> <p>60P</p></div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Soil</h4></div>
+                        <div class="box_item"> <p>Yes</p></div>
                     </div>
-                    <div id="box_border">
-                        <div class="box_title"> <h4>Size:</h4></div>
-                        <div class="box_item"> <p>60P</p></div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Co2</h4></div>
+                        <div class="box_item"> <p>Yes</p></div>
                     </div>
                 </div>
             </div>
+
+            <div id="ScapeGallery" class="scape_tab" style="display: none;">
+                <h1>Gallery</h1>
+            </div>
         </div>
-
-
-
-
-
-
-
-
-
-
     </main>
+
+    <script>
+        function openTab(tabName) {
+          var i;
+          var x = document.getElementsByClassName("scape_tab");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          document.getElementById(tabName).style.display = "block";  
+        }
+        </script>
 </body>
 </html>
