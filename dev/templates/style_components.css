@@ -1,16 +1,25 @@
+body  { 
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
 header {
-    background-color: pink;
+    background-color: rgb(252, 252, 252);
     display: flex;
     justify-content:space-between;
     align-items: center;
     padding: 0rem 1rem;
 }
+#hamburger button{
+    border: none;
+    background: none;
+}
+#hamburger img{
+    max-width: 25px;
+}
 h4, p{
     margin: 0;
 }
-main {
-    margin: 0rem 1rem;
-}
+
 #scape_view h2 {
     border-right: solid rgb(255, 255, 255) 2px;
 }
@@ -18,7 +27,9 @@ main {
     color:rgb(238, 238, 238);
     margin: 0;
     padding: 0rem 1rem;
+    font-weight: 400;
 }
+
 #scape_header {
     background-color: rgb(11, 11, 11);
     display: flex;
@@ -27,6 +38,19 @@ main {
     padding: 0rem 1rem;
     margin: 0rem;
 }
+
+#main_img{
+    padding: .5rem;
+    
+}
+#main_img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px ;
+    
+
+}
+
 .scape_section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -48,21 +72,45 @@ main {
 .scape_section button:hover{
     color:black;
     background-color: rgb(122, 122, 122);
-    
 }
-
+.scape_section button::selection{
+    color:black;
+    background-color: rgb(122, 122, 122);
+}
+.scape_tab{
+    margin: 1rem 2rem ;
+}
 /* Start of Scape Feed style */
+
 
 .feed_post{
     display: grid;
     grid-template-columns: 1fr;
 }
 
+.feed_text {
+    border-top: solid 1px black;
+    padding-top: 1rem;
+    margin-top: .3rem;
+}
+.feed_text p{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 .feed_post img{
     max-width: 100%;
     height: auto;
+    border-radius: 4px;
+    margin: .5rem 0;
 }
 
+.feed_post_date{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: ;
+    font-family: Arial, Helvetica, sans-serif;
+}
 #equipment{
     align-content: center;
     display:grid;

@@ -5,42 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style_components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div> <h2> Aquaquery </h2></div>
-        <div> MenuButton </div>
+        <div> <h2> AquaQuery </h2></div>
+        <div id="hamburger"><button><img src="/dev/media/menu-svgrepo-com.svg" alt=""></button></div>
     </header>
-    <hr>
-            
     <main>
-        <h1>Components</h1>
-
         <div id="scape_view">
             <div id="scape_header">
                 <h2>Zombeers</h2>
                 <h3>"The Ant Hill"</h3>
             </div>
-            <br>
+            <div id="main_img">
+                <img src="/dev/media/plants.jpg" alt="">
+            </div>
             <div class="scape_section">
                 <button onclick="openTab('ScapeFeed')">Feed</button>
                 <button onclick="openTab('ScapeInfo')">Info</button>
                 <button onclick="openTab('ScapeGallery')">Gallery</button>
             </div>
-            <br>
-
-
             <div id="ScapeFeed" class="scape_tab">
-                <h1>Scape Feed</h1>
-
                 <section id="feed_body">
                     <div class="feed_post">
-                        <div>
+                        <div class="feed_post_date">
                             <h4>01/28/24 - 10:37pm</h4>
                         </div>
-                        <div><img src="/dev/media/pic_1.jpg"></div>
-                        <div><img src="/dev/media/pic_2.jpg" alt=""></div>
-                        <div>
+                        <div class="feed_img"><img src="/dev/media/pic_1.jpg"></div>
+                        <div class="feed_img"><img src="/dev/media/pic_2.jpg" alt=""></div>
+                        <div class="feed_text">
                             <p>
                                 Finally changed the foreground on the iwagumi. Diatoms and Godzilla were pissing all over the soild which caused the kh to change to No4. I'm hoping with enough ADA excel we will be able to beat this meet.
                             </p>
