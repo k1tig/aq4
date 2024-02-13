@@ -1,5 +1,6 @@
 from django.db import models
 
+
 from django.contrib.auth.models import User 
 
 
@@ -8,6 +9,8 @@ class Profile(models.Model):
     user_name = models.ForeignKey(User,on_delete=models.CASCADE, related_name = "user")
     country = models.CharField(max_length=200, blank = True)
     instagram = models.CharField(max_length=200)
+    scapes_followed = models.ManyToManyField("Scape", blank = True)
+    
 
     def __str__(self):
         return self.user_name.username
@@ -96,11 +99,9 @@ class Scape(models.Model):
     lighting = models.ForeignKey(TankLight, on_delete=models.CASCADE)
     co2 = models.ForeignKey(TankCo2, on_delete=models.CASCADE)
     soil = models.ForeignKey(TankSoil, on_delete=models.CASCADE)
-
     hardscape = models.ManyToManyField(TankHardscape, blank = True)
     fish = models.ManyToManyField(Fish, blank = True)
     invertebrate = models.ManyToManyField(Invertebrate, blank = True)
-
     plants = models.ManyToManyField(Plant, related_name= "fucking_scape_id", blank = True)
 
     def __str__(self):
