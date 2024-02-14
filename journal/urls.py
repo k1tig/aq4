@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from. import views
+from journal.views import AddEntry
 
 
 
 urlpatterns = [
-    path("journal/add-entry/", views.add_entry, name='add-entry')
+    path("journal/add-entry/", AddEntry.as_view(), name="add_entry"),
 
 ]

@@ -1,14 +1,17 @@
 from django.shortcuts import render,redirect
+from django.views.generic.edit import CreateView
 from journal.forms import EntryCreateForm
+from journal.models import Entry
+from django.urls import reverse_lazy
 
-def add_entry(request):
-    if request.method =='POST':
-        form =EntryCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    context ={'form' : EntryCreateForm()}
-    return render(request,'add-entry.html', context)
-    
+class AddEntry(CreateView):
+    model = Entry
+    form_class=EntryCreateForm
+    success_url = reverse_lazy('home')
+    template_name = 'add-entry.html'
 
+    def get_form_kwargs(self):
+        kwargs = super(AddEntry, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
 

@@ -14,7 +14,7 @@
 
     <h1>Add Journal Entry</h1>
     <hr>
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         

@@ -1,15 +1,17 @@
 
 
 from journal.models import Entry
-from django.views.generic.edit import CreateView
+from django.utils import timezone
 from django import forms
 from catalog.models import Scape
 
-class EntryCreateForm(CreateView):
-    scape = forms.ModelChoiceField(
-        queryset=Scape.objects.filter(owner = 0)
-    )
-    
+class EntryCreateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request')
+        super(EntryCreateForm, self).__init__(*args, **kwargs)
+        self.fields['scape'].queryset= Scape.objects.all()
+
     class Meta:
         model = Entry
         fields = ('scape', 'post_date', 'content')
+    

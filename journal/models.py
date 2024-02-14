@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from catalog.models import Scape
-from django.forms import ModelForm, forms
-from django.contrib.auth.models import User
+
 
 
 
