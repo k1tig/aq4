@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style_components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div> <h2> AquaQuery </h2></div>
+        <div id="hamburger"><button><img src="/dev/media/menu-svgrepo-com.svg" alt=""></button></div>
+    </header>
+    <main>
+        <div id="scape_view">
+            <div id="scape_header">
+                <h2>Zombeers</h2>
+                <h3>"The Ant Hill"</h3>
+            </div>
+            <div id="main_img">
+                <img src="/dev/media/plants.jpg" alt="">
+            </div>
+            <div class="scape_section">
+                <button onclick="openTab('ScapeFeed')">Feed</button>
+                <button onclick="openTab('ScapeInfo')">Info</button>
+                <button onclick="openTab('ScapeGallery')">Gallery</button>
+            </div>
+            <div id="ScapeFeed" class="scape_tab">
+                <section id="feed_body">
+                    <div class="feed_post">
+                        <div class="feed_post_date">
+                            <h4>01/28/24 - 10:37pm</h4>
+                        </div>
+                        <div class="feed_img"><img src="/dev/media/pic_1.jpg"></div>
+                        <div class="feed_img"><img src="/dev/media/pic_2.jpg" alt=""></div>
+                        <div class="feed_text">
+                            <p>
+                                Finally changed the foreground on the iwagumi. Diatoms and Godzilla were pissing all over the soild which caused the kh to change to No4. I'm hoping with enough ADA excel we will be able to beat this meet.
+                            </p>
+                        </div>
+                        <div class="feed_tags">
+                            <div>Change Log:</div>
+                            <a href="#">Add: Pogostemon Helferi</a>
+                            <a href="#">Update: General</a>
+                            <a href="#">Remove: Staurogyne Repens</a>
+                            <a href="#">Remove: Rotala Sp. "Rad"</a>
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="ScapeInfo" class="scape_tab" style="display: none;">
+                
+                <div id="equipment">
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Size</h4></div>
+                        <div class="box_item"> <p>60P</p></div>
+                    </div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Volume</h4></div>
+                        <div class="box_item"> <p>66L</p></div>
+                    </div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Lighting</h4></div>
+                        <div class="box_item"> <p>Chihiros WRGB2</p></div>
+                    </div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Filtration</h4></div>
+                        <div class="box_item"> <p>Oase Biomaster 350</p></div>
+                    </div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Soil</h4></div>
+                        <div class="box_item"> <p>Yes</p></div>
+                    </div>
+                    <div class="box_border">
+                        <div class="box_title"> <h4>Co2</h4></div>
+                        <div class="box_item"> <p>Yes</p></div>
+                    </div>
+                </div>
+
+                <div class="info_title"><h3>Plants</h3></div>
+                <div id="plants">
+                    <div class="plant_item">
+                        <div class="plant_img"><img src="/dev/media/arr.jpg" alt=""></div>
+                        <div class="plant_title"><h4>Plant Name</h4></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ScapeGallery" class="scape_tab" style="display: none;">
+                <h1>Gallery</h1>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openTab(tabName) {
+          var i;
+          var x = document.getElementsByClassName("scape_tab");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          document.getElementById(tabName).style.display = "block";  
+        }
+    </script>
+</body>
+</html>
