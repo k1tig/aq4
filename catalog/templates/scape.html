@@ -21,6 +21,15 @@
             </ul>
         </div>
         
+        <div>
+            <h3>Feed</h3>
+            <ul>
+                {% for i in feed%} 
+                    <h4>{{i.post_date}}<h4>
+                    <p>{{i.content}}</p>
+                {% endfor %}
+            </ul>
+        </div>
             
             
             

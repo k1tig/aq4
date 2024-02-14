@@ -6,7 +6,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from catalog.models import Scape, Plant
+from catalog.models import Scape, Plant,Profile
+from journal.models import Entry
 
 
 class HomePageView(TemplateView):
@@ -25,9 +26,27 @@ class ScapeListView(ListView):
     model = Scape
     template_name= "list_scape.html"
 
-class ScapeView(DetailView):
-    model = Scape
-    template_name = "scape.html"
+#class ScapeView(DetailView):
+#    model = Scape
+#    template_name = "scape.html"
+
+
+def scapeview(request, pk):
+    scape = Scape.objects.get(id=pk)
+    feed = Entry.objects.filter(scape = pk)
+
+    context = {
+        'scape' : scape,
+        'feed' : feed
+    }
+    
+    return render(request, 'scape.html', context)
+
+
+
+
+
+
 
 class AddScapeView(FormView):
     template_name = "add_scape.html"
