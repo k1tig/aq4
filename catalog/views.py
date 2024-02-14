@@ -4,21 +4,30 @@ from catalog.forms import ScapeForm, PlantForm
 from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView, ListView
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 from catalog.models import Scape, Plant
 
 
 class HomePageView(TemplateView):
     template_name= "home.html"
 
+
+class CustomLoginView(LoginView):
+    template_name = 'base/login.html'
+    fields = '__all__'
+    redirect_authenticated_user = True
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+
 class ScapeListView(ListView):
     model = Scape
     template_name= "list_scape.html"
 
-
 class ScapeView(DetailView):
     model = Scape
     template_name = "scape.html"
-
 
 class AddScapeView(FormView):
     template_name = "add_scape.html"
@@ -51,4 +60,3 @@ class UpdatePlantView(UpdateView):
     template_name = "update_plant.html"
     success_url = "/"
         
-# Create your views here.

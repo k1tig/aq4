@@ -10,7 +10,7 @@ class EntryCreateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
         super(EntryCreateForm, self).__init__(*args, **kwargs)
-        self.fields['scape'].queryset= Scape.objects.filter(owner = 2) # test set with owner filter, need to set to self.request.user
+        self.fields['scape'].queryset= Scape.objects.filter(owner = self.request.user.id)
 
     class Meta:
         model = Entry
