@@ -9,7 +9,7 @@ class Profile(models.Model):
     user_name = models.ForeignKey(User,on_delete=models.CASCADE, related_name = "user")
     country = models.CharField(max_length=200, blank = True)
     instagram = models.CharField(max_length=200)
-    scapes_followed = models.ManyToManyField("Scape", blank = True)
+    
     
 
     def __str__(self):

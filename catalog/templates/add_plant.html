@@ -1,8 +1,7 @@
 {% extends 'base_generic.html' %}
 {% load crispy_forms_tags %}
 
-<body>
-
+{% block content %}
     <h1>Add Plant</h1>
     <hr>
     <form method="post">
@@ -10,5 +9,4 @@
         {{ form|crispy}}
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+{% endblock %}
