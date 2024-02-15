@@ -2,37 +2,68 @@
 
 
     {% block content %}
-
-        <h2>Scape</h2>
-        <br>
-
-        <h3>Scape: {{ scape.scape_name }}</h3>
-        <h3>Owner: {{ scape.owner }}</h3>
+        <h4>Scape: {{ scape.scape_name }}</h4>
+        <h5>Owner: {{ scape.owner }}</h5>
+        <hr>
         
+        <h5>Details:</h5>
+        <ul>
+            <li>Size: {{scape.size}}</li>
+            <li>Volme: {{scape.volume}}</li>
+            <li>Filtration: {{scape.filtration}}</li>
+            <li>Lighting:{{scape.lighting}}</li>
+            <li>CO2:{{scape.co2}}</li>
+            <li>Soil:{{scape.soil}}</li>
+        </ul>
+
+        <div><span style="text-decoration: underline;">Hardscape</span></div>
+        <ul>{% for hardscape in scape.hardscape.all %} <li>{{hardscape}}</li>  {% endfor %}</ul>
+        
+        <div><span style="text-decoration: underline;">Fish</span></div>
+        <ul>{% for fish in scape.fish.all %} <li>{{fish}}</li> {% endfor %}</ul>
+        
+        <div><span style="text-decoration: underline;">Invertebrates</span></div>
+        <ul>{% for invert in scape.invertebrate.all %} <li>{{invert}}</li> {% endfor %}</ul>
 
         <div>
-            <h3>Tank Details</h3>
-            <br><br>
-            <h4>Plants:</h4> 
+            <h5>Plants:</h5> 
             <ul>
                 {% for i in scape.plants.all %} 
                 <li>{{i}}</li>  
                 {% endfor %}
             </ul>
         </div>
+        <hr><br>
+
+        <h3>Scape Jounal</h3>
+        <br>
+
+        {% for feed in page_obj %}
         
-        <div>
-            <h3>Feed</h3>
-            <ul>
-                {% for i in feed%} 
-                    <h4>{{i.post_date}}<h4>
-                    <p>{{i.content}}</p>
-                {% endfor %}
-            </ul>
+        <div>{{ feed.post_date }}</div>
+        <div><p>{{feed.content }}</p></div>
+
+        <br>
+        {% endfor %}
+        <hr>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+            
         </div>
-            
-            
-            
         
     {% endblock %}
 

@@ -8,6 +8,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from catalog.models import Scape, Plant,Profile
 from journal.models import Entry
+from django.core.paginator import Paginator
 
 
 class HomePageView(TemplateView):
@@ -35,11 +36,18 @@ def scapeview(request, pk):
     scape = Scape.objects.get(id=pk)
     feed = Entry.objects.filter(scape = pk)
 
+    
+    
+    paginator = Paginator(feed, 3) 
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
         'scape' : scape,
-        'feed' : feed
+        'feed' : feed,
+        'page_obj' : page_obj,
     }
-    
+
     return render(request, 'scape.html', context)
 
 
