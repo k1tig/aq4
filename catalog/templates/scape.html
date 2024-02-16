@@ -18,27 +18,29 @@
 
             <div>
                 <div><span style="text-decoration: underline;">Hardscape</span></div>
-                <ul>{% for hardscape in scape.hardscape.all %} <li>{{hardscape}}</li>  {% endfor %}</ul>
-                
+                <div>{% for hardscape in scape.hardscape.all %} {{hardscape}} {% endfor %} </div>
+                <br>
+
                 <div><span style="text-decoration: underline;">Fish</span></div>
-                <ul>{% for fish in scape.fish.all %} <li>{{fish}}</li> {% endfor %}</ul>
+                <div>{% for fish in scape.fish.all %} {{fish}} {% endfor %}</div>
+                <br> 
                 
                 <div><span style="text-decoration: underline;">Invertebrates</span></div>
-                <ul>{% for invert in scape.invertebrate.all %} <li>{{invert}}</li> {% endfor %}</ul>
-
-                <div>
-                    <h5>Plants:</h5> 
-                    <ul>
-                        {% for i in scape.plants.all %} 
-                        <li>{{i}}</li>  
-                        {% endfor %}
-                    </ul>
-                </div>
-
+                <div>{% for invert in scape.invertebrate.all %} {{invert}} {% endfor %}</div>
             </div>
-
         </div>
-        
+
+        <div>
+            <h5>Plants:</h5> 
+            
+             <div style="display: flex; flex-wrap: wrap;">
+                {% for i in scape.plants.all %} 
+                    <a style="text-decoration: none; color: darkslategray;" href="#">-{{i}}&nbsp;</a>
+                {% endfor %}
+             </div>   
+                
+            
+        </div>
         <hr>
 
         <h3>Scape Jounal</h3>
@@ -46,8 +48,9 @@
 
         {% for feed in page_obj %}
         
-        <div>{{ feed.post_date }}</div>
+        <div><h6>{{ feed.post_date }}</h6></div>
         <div><p>{{feed.content }}</p></div>
+        <div style="display: flex; align-items: center; min-width: 96px; flex-wrap: wrap;"> {% for tag in feed.plant_tags.all %} <a  style="text-decoration: none; color: rgb(199, 199, 199); background-color: rgb(28, 28, 28); margin: .2rem 1rem; padding: .2rem .2rem;" href="#">{{tag}}</a> {% endfor %}</div>
 
         <br>
         {% endfor %}
