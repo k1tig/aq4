@@ -48,9 +48,10 @@
 
         {% for feed in page_obj %}
         
-        <div><h6>{{ feed.post_date }}</h6></div>
+        <div><h6 style="font-weight:600;">{{ feed.post_date }}</h6></div>
         <div><p>{{feed.content }}</p></div>
-        <div style="display: flex; align-items: center; min-width: 96px; flex-wrap: wrap;"> {% for tag in feed.plant_tags.all %} <a  style="text-decoration: none; color: rgb(199, 199, 199); background-color: rgb(28, 28, 28); margin: .2rem 1rem; padding: .2rem .2rem;" href="#">{{tag}}</a> {% endfor %}</div>
+        <div style="display: flex; align-items: center; min-width: 96px; flex-wrap: wrap;"><span style="font-size:1.2rem;">Tags:</span> {% for tag in feed.plant_tags.all %} <a  style="text-decoration: none; color: rgb(199, 199, 199); background-color: rgb(28, 28, 28); margin: .2rem .2rem; padding: .2rem .2rem;" href="#">{{tag}}</a> {% endfor %}</div>
+        <hr>
 
         <br>
         {% endfor %}
