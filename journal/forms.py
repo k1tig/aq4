@@ -1,5 +1,3 @@
-
-
 from journal.models import Entry
 from django.utils import timezone
 from django import forms
@@ -14,5 +12,5 @@ class EntryCreateForm(forms.ModelForm):
 
     class Meta:
         model = Entry
-        fields = ('scape', 'post_date', 'content')
+        fields = ('scape', 'post_date', 'content', 'plant_tags')
     
