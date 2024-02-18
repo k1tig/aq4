@@ -4,7 +4,7 @@ body{
 }
 
 a {
-    color: lightseagreen;
+    color: rgb(216, 216, 216);
 }
 
 h1{
@@ -88,9 +88,34 @@ p{
     background-color: white;
     border-radius: 2px;
 }
-/*
+
+.list_name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scape_list{
+    background-color: white;
+    margin:1rem 0;
+}
+
+.list_name{
+    background-color: rgb(29, 29, 29);
+    color: whitesmoke;
+}
 .infotags{
     display: flex;
-    justify-content: center ;
+    flex-wrap: wrap;
 }
-*/
+.scape_tags{
+    display: flex;
+    padding: .2rem .4rem;
+}
+
+.scape_tags a{
+    background-color: rgb(49, 49, 49);
+    text-decoration: none;
+    padding: .2rem .2rem;
+    border-radius: 4px;
+}

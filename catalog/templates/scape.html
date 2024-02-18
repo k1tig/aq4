@@ -82,38 +82,46 @@
                     </div>
                 </div>
 
-                <div class="infotags">
-                    <h3>Hardscape</h3>
-                    <div>
+                <div class="scape_list">
+                    <div class="list_name"><h3>Hardscape</h3></div>
+                    <div class="infotags">
                         {% for hardscape in scape.hardscape.all %} 
-                            {{hardscape}} 
+                            <div class="scape_tags">
+                                <a href="#">-{{hardscape}}&nbsp;</a>
+                            </div> 
                         {% endfor %} 
                     </div>
                 </div>
 
-                <div class="infotags">
-                    <h3>Fish</h3>
-                    <div>
+                <div class="scape_list">
+                    <div class="list_name"><h3>Fish</h3></div>
+                    <div class="infotags">
                         {% for fish in scape.fish.all %} 
-                            {{fish}} 
+                            <div class="scape_tags">
+                                <a href="#">-{{fish}}&nbsp;</a>
+                            </div> 
                         {% endfor %}
                     </div>
                 </div>
 
-                <div class="infotags">
-                    <h3>Invertebrates</h3>
-                    <div>
+                <div class="scape_list">
+                    <div class="list_name"><h3>Invertebrates</h3></div>
+                    <div class="infotags">
                         {% for invert in scape.invertebrate.all %} 
-                            {{invert}} 
+                            <div class="scape_tags"> 
+                                <a href="#">-{{invert}}&nbsp;</a>
+                            </div>
                         {% endfor %}
                     </div>
                 </div>
 
-                <div>
-                    <h3>Plants:</h3> 
-                    <div style="display: flex; flex-wrap: wrap;">
-                        {% for i in scape.plants.all %} 
-                            <a style="text-decoration: none; color: darkslategray;" href="#">-{{i}}&nbsp;</a>
+                <div class="scape_list">
+                    <div class="list_name"><h3>Plants</h3> </div>
+                    <div class="infotags">
+                        {% for plant in scape.plants.all %} 
+                            <div class="scape_tags">
+                                <a href="#">-{{plant}}&nbsp;</a>
+                            </div>
                         {% endfor %}
                     </div>   
                 </div>
