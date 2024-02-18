@@ -1,78 +1,146 @@
 {% extends 'base_generic.html' %}
     {% block content %}
-        <h4>Scape: {{ scape.scape_name }}</h4>
+        <h1>Scape: {{ scape.scape_name }}</h1>
         <p>Owner: {{ scape.owner }}</p>
         <hr>
-        <div style="display: grid; grid-template-columns: 1fr 1fr;">
-            <div>
-                <h5>Details:</h5>
-                <ul>
-                    <li>Size: {{scape.size}}</li>
-                    <li>Volme: {{scape.volume}}</li>
-                    <li>Filtration: {{scape.filtration}}</li>
-                    <li>Lighting:{{scape.lighting}}</li>
-                    <li>CO2:{{scape.co2}}</li>
-                    <li>Soil:{{scape.soil}}</li>
-                </ul>
-            </div>
 
-            <div>
-                <div><span style="text-decoration: underline;">Hardscape</span></div>
-                <div>{% for hardscape in scape.hardscape.all %} {{hardscape}} {% endfor %} </div>
-                <br>
-
-                <div><span style="text-decoration: underline;">Fish</span></div>
-                <div>{% for fish in scape.fish.all %} {{fish}} {% endfor %}</div>
-                <br> 
-                
-                <div><span style="text-decoration: underline;">Invertebrates</span></div>
-                <div>{% for invert in scape.invertebrate.all %} {{invert}} {% endfor %}</div>
-            </div>
+        <div class="scape_section">
+            <button class="scape_button redtab_button" onclick="openTab(event,'ScapeFeed')">Feed</button>
+            <button class="scape_button " onclick="openTab(event,'ScapeInfo')">Info</button>
+            <button class="scape_button " onclick="openTab(event,'ScapeGallery')">Gallery</button>
         </div>
 
-        <div>
-            <h5>Plants:</h5> 
-            
-             <div style="display: flex; flex-wrap: wrap;">
-                {% for i in scape.plants.all %} 
-                    <a style="text-decoration: none; color: darkslategray;" href="#">-{{i}}&nbsp;</a>
-                {% endfor %}
-             </div>   
-                
-            
-        </div>
-        <hr>
+        <div id="ScapeFeed" class="scape_tab">
+            <h3>Scape Jounal</h3>
+            <br>
 
-        <h3>Scape Jounal</h3>
-        <br>
-
-        {% for feed in page_obj %}
-        
-        <div><h6 style="font-weight:600;">{{ feed.post_date }}</h6></div>
-        <div><p>{{feed.content }}</p></div>
-        <div style="display: flex; align-items: center; min-width: 96px; flex-wrap: wrap;"><span style="font-size:1.2rem;">Tags:</span> {% for tag in feed.plant_tags.all %} <a  style="text-decoration: none; color: rgb(199, 199, 199); background-color: rgb(28, 28, 28); margin: .2rem .2rem; padding: .2rem .2rem;" href="#">{{tag}}</a> {% endfor %}</div>
-        <hr>
-
-        <br>
-        {% endfor %}
-        <hr>
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% for feed in page_obj %}
+            <div>{{ feed.post_date }}</div>
+            <div><p>{{feed.content }}</p></div>
+            <div>
+                {%if feed.plant_tags.all %}
+                    <span>Tags:</span> 
+                    {% for tag in feed.plant_tags.all %} 
+                        <a>{{tag}}</a> 
+                    {% endfor %}
                 {% endif %}
+            </div>
+            <br>
+            {% endfor %}
+            <hr>
 
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+    
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+    
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
                 </span>
-
-                {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
+            </div>
         </div>
+
+        <div id="ScapeInfo" class="scape_tab" style="display: none;">
+            <div>
+                <div id="common_boxs">
+                    <div class="info_box">
+                        <div class="box_name">Size </div>
+                        <div class="box_info">{{scape.size}}</div>
+                    </div>
+
+                    <div class="info_box">
+                        <div class="box_name">Volme</div>
+                        <div class="box_info">{{scape.volume}}</div>
+                    </div>
+
+                    <div class="info_box">
+                        <div class="box_name">Filtration</div>
+                        <div class="box_info">{{scape.filtration}}</div>
+                    </div>
+
+                    <div class="info_box">
+                        <div class="box_name">Lighting</div>
+                        <div class="box_info">{{scape.lighting}}</div>
+                    </div>
+
+                    <div class="info_box">
+                        <div class="box_name">CO2</div>
+                        <div class="box_info">{{scape.co2}}</div>
+                    </div>
+
+                    <div class="info_box">
+                        <div class="box_name">Soil</div>
+                        <div class="box_info">{{scape.soil}}</div>
+                    </div>
+                </div>
+
+                <div class="infotags">
+                    <h3>Hardscape</h3>
+                    <div>
+                        {% for hardscape in scape.hardscape.all %} 
+                            {{hardscape}} 
+                        {% endfor %} 
+                    </div>
+                </div>
+
+                <div class="infotags">
+                    <h3>Fish</h3>
+                    <div>
+                        {% for fish in scape.fish.all %} 
+                            {{fish}} 
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="infotags">
+                    <h3>Invertebrates</h3>
+                    <div>
+                        {% for invert in scape.invertebrate.all %} 
+                            {{invert}} 
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Plants:</h3> 
+                    <div style="display: flex; flex-wrap: wrap;">
+                        {% for i in scape.plants.all %} 
+                            <a style="text-decoration: none; color: darkslategray;" href="#">-{{i}}&nbsp;</a>
+                        {% endfor %}
+                    </div>   
+                </div>
+
+            </div>
+        </div>
+
+        <div id="ScapeGallery" class="scape_tab" style="display: none;"></div>
+        <br><br>
+
+        <script>
+            function openTab(evt, tabName) {
+              var i, scape_buttons;
+              var x = document.getElementsByClassName("scape_tab");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+              }
+
+            scape_buttons = document.getElementsByClassName("scape_button");
+            for (i = 0; i < x.length; i++) {
+                scape_buttons[i].className = scape_buttons[i].className.replace("redtab_button", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";  
+            evt.currentTarget.className += "redtab_button";
+            }
+        </script>
     {% endblock %}
 
  
