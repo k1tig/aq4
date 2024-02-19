@@ -20,6 +20,45 @@ p{
     color: wheat;
 }
 
+header{
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+}
+
+header #myLinks {
+    display: none;
+    background-color: rgb(31, 30, 21);
+    padding: .3rem 0;
+}
+
+header a{
+    display:block;
+    text-decoration: none;
+    padding: 1rem 1.2rem;
+    
+}
+.hamburger{
+    border: none;
+    width: 50px;
+    background: none;
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: wheat;
+}
+
+.hamburger:hover{
+    background-color: #ddd;
+    color: black;
+  }
+
+
+
+
+
+
 .scape_section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -97,7 +136,7 @@ p{
 
 .scape_list{
     background-color: white;
-    margin:1rem 0;
+    padding: 1rem 0;
 }
 
 .list_name{
