@@ -1,7 +1,7 @@
 {% extends 'base_generic.html' %}
     {% block content %}
         <h1>Scape: {{ scape.scape_name }}</h1>
-        <p>Owner: {{ scape.owner }}</p>
+        <p>Owner: <a href=" {% url 'user_view'  scape.owner.id  %}">{{ scape.owner }}</a></p>
         <hr>
 
         <div class="scape_section">

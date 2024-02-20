@@ -2,7 +2,6 @@
 from django.shortcuts import render
 from catalog.forms import ScapeForm, PlantForm
 from django.views.generic.edit import FormView, UpdateView
-from django.views.generic.detail import DetailView
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
@@ -27,10 +26,6 @@ class ScapeListView(ListView):
     model = Scape
     template_name= "list_scape.html"
 
-#class ScapeView(DetailView):
-#    model = Scape
-#    template_name = "scape.html"
-
 
 def scapeview(request, pk):
     scape = Scape.objects.get(id=pk)
@@ -50,6 +45,18 @@ def scapeview(request, pk):
 
     return render(request, 'scape.html', context)
 
+
+###### Below: User Scapes page view
+
+def user_scapesView(request, pk):
+    profile = Profile.objects.get(id=pk)
+    scape = Scape.objects.filter(owner = pk)
+
+    context = {
+        'scape' : scape,
+        'profile' : profile,
+    }
+    return render(request, 'user_page.html', context)
 
 
 

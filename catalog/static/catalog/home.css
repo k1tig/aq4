@@ -45,7 +45,7 @@ header a{
     font-size: 2rem;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 16;
     color: wheat;
 }
 
@@ -157,4 +157,15 @@ header a{
     text-decoration: none;
     padding: .2rem .2rem;
     border-radius: 4px;
+}
+
+
+/* Add journal */
+
+.select2-results__options{
+    color: rgb(29, 29, 29)
+}
+.select2-selection__choice__display{
+    color: rgb(29, 29, 29)
+    
 }
