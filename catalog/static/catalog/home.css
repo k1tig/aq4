@@ -5,62 +5,60 @@
     --secondary-color: #4e4d4d;
     --highlight-color: #2cacb5;
     --alt-highlight-color: #48943c;
-    
-
 }
-
-
 
 body{ 
     background-color: var(--light-color);
     color: var(--primary-color);
 }
-
-
-
 h1{
     color: var(--primary-color);
     font-size: 2rem;
-    
 }
-
 p{
     font-size: 1rem;
 }
 #greeting{
     color: var(--primary-color);
 }
-
 header{
+    display: flex;
     justify-content: space-between;
-    overflow: hidden;
-    position: relative;
-    background-color: var(--primary-color);
-    
+    align-items: center;
+    padding: 1rem 0;
+    background-image: url(/static/media/buce_banner.png);
+    background-size: cover;
+    border-bottom: 3px solid;
+    border-color: var(--light-color);
+}
+header a {
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: var(--alt-highlight-color);
 }
 
-header #myLinks {
+.aquaquery{
+    color: var(--light-color);
+}
+
+#myLinks {
     display: none;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     padding: .3rem 0;
 }
 
-header a, h1{
-    display:block;
+#myLinks a{
     text-decoration: none;
-    padding: 1rem 1.2rem;
-    color: var(--light-color)
-    
+    color: var(--light-color);
 }
+
 .hamburger{
     border: none;
-    width: 50px;
     background: none;
     font-size: 2rem;
-    position: absolute;
-    right: 0;
-    top: 16;
     color: var(--light-color);
+    padding: .2rem .7rem ;
+    margin-right: .4rem;
 }
 
 .hamburger:hover{
@@ -68,7 +66,9 @@ header a, h1{
   }
 
 
-
+.title{
+    color: var(--primary-color);
+}
 
 
 
@@ -176,15 +176,11 @@ header a, h1{
 /* Add journal */
 
 .select2-results__options{
-    color: rgb(29, 29, 29)
+    color: rgb(29, 29, 29);
 }
 .select2-selection__choice__display{
-    color: rgb(29, 29, 29)
-    
+    color: rgb(29, 29, 29);
 }
-
-
-
 
 
 /* Scape Page  
@@ -194,9 +190,27 @@ header a, h1{
 }
 
 */
-.post_tags{
+
+#tags_container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: .6rem .3rem;
+    border-radius: 4px;
+
+}
+
+#tags_container span{
     color: var(--light-color);
-    background-color: var(--alt-highlight-color);
-    padding: .2rem .3rem;
+}
+.post_tags{
+    text-decoration: none;
+    color: var(--light-color);
+    background-color: var(--secondary-color);
+    padding: .2rem .6rem;
+    margin: .2rem .2rem;
+    border-radius: 5px;
+
     /* need to fix margin on tags */
 }

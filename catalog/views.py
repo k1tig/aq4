@@ -61,11 +61,6 @@ def user_scapesView(request, pk):
     }
     return render(request, 'user_page.html', context)
 
-
-
-
-
-
 class AddScapeView(FormView):
     template_name = "add_scape.html"
     form_class = ScapeForm
