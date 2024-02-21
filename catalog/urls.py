@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from catalog.views import AddScapeView, AddPlantView, HomePageView, UpdateScapeView, UpdatePlantView, scapeview, ScapeListView, CustomLoginView, user_scapesView
+from catalog.views import AddScapeView, AddPlantView, HomePageView,UpdateScapeView, UpdatePlantView, scapeview, ScapeListView, CustomLoginView, user_scapesView, logout_view
 
 
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
     path('login/', CustomLoginView.as_view(), name = 'login'),
+    path('logout/', logout_view, name = "logout"),
     
 
     path("catalog/add-scape/", AddScapeView.as_view(), name="add_scape"),

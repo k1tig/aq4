@@ -17,11 +17,11 @@
             {% for feed in page_obj %}
             <div>{{ feed.post_date }}</div>
             <div><p>{{feed.content }}</p></div>
-            <div>
+            <div id="tags_container">
                 {%if feed.plant_tags.all %}
                     <span>Tags:</span> 
                     {% for tag in feed.plant_tags.all %} 
-                        <a>{{tag}}</a> 
+                        <a class="post_tags">{{tag}}</a> 
                     {% endfor %}
                 {% endif %}
             </div>

@@ -1,18 +1,20 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from catalog.forms import ScapeForm, PlantForm
 from django.views.generic.edit import FormView, UpdateView
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
+from django.contrib import messages
 from django.urls import reverse_lazy
 from catalog.models import Scape, Plant,Profile
 from journal.models import Entry
 from django.core.paginator import Paginator
 
 
+
 class HomePageView(TemplateView):
     template_name= "home.html"
-
 
 class CustomLoginView(LoginView):
     template_name = 'base/login.html'
@@ -22,16 +24,18 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy('home')
 
+def logout_view(request):
+    logout(request)
+    messages.success(request, ("Logout Successful"))
+    return redirect("home")
+
 class ScapeListView(ListView):
     model = Scape
     template_name= "list_scape.html"
 
-
 def scapeview(request, pk):
     scape = Scape.objects.get(id=pk)
     feed = Entry.objects.filter(scape = pk)
-
-    
     
     paginator = Paginator(feed, 3) 
     page_number = request.GET.get("page")
@@ -44,7 +48,6 @@ def scapeview(request, pk):
     }
 
     return render(request, 'scape.html', context)
-
 
 ###### Below: User Scapes page view
 

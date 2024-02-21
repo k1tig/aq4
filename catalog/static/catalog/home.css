@@ -169,3 +169,16 @@ header a{
     color: rgb(29, 29, 29)
     
 }
+
+
+
+
+
+/* Scape Page  */
+
+#tags_container{
+    background-color: darkslategray;
+}
+.post_tags{
+    color: aliceblue;
+}
