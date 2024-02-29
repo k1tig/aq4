@@ -1,58 +1,63 @@
 {% extends 'base_generic.html' %}
     {% block content %}
-        <h1>Scape: {{ scape.scape_name }}</h1>
-        <p>Owner: <a id="tank_owner" href=" {% url 'user_view'  scape.owner.id  %}">{{ scape.owner }}</a></p>
-        <hr>
+    <div>
 
-        <div class="scape_section">
-            <button class="scape_button redtab_button" onclick="openTab(event,'ScapeFeed')">Feed</button>
-            <button class="scape_button " onclick="openTab(event,'ScapeInfo')">Info</button>
-            <button class="scape_button " onclick="openTab(event,'ScapeGallery')">Gallery</button>
+        <div class="scape_top">
+            <h1>Scape: {{ scape.scape_name }}</h1>
+            <p>Owner: <a id="tank_owner" href=" {% url 'user_view'  scape.owner.id  %}">{{ scape.owner }}</a></p>
+            <hr>
+
+            <div class="scape_section">
+                <button class="scape_button redtab_button" onclick="openTab(event,'ScapeFeed')">Feed</button>
+                <button class="scape_button " onclick="openTab(event,'ScapeInfo')">Info</button>
+                <button class="scape_button " onclick="openTab(event,'ScapeGallery')">Gallery</button>
+            </div>
         </div>
 
         <div id="ScapeFeed" class="scape_tab">
-            <h3>Scape Jounal</h3>
-            <br>
+            <div class="scape_tab_container">
+                <h3>Scape Jounal</h3>
+                <br>
 
-            {% for feed in page_obj %}
-            <div>{{ feed.post_date }}</div>
-            <div><p>{{feed.content }}</p></div>
-            
-            
-                {%if feed.plant_tags.all %}
-                <div id="tags_container">
-                    <span><strong>Tags:</strong></span> 
-                    {% for tag in feed.plant_tags.all %} 
-                        <a class="post_tags">{{tag}}</a> 
-                    {% endfor %}
-                </div>    
-                {% endif %}
-            
-            <br>
-            {% endfor %}
-            <hr>
-
-            <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% for feed in page_obj %}
+                <div>{{ feed.post_date }}</div>
+                <div><p>{{feed.content }}</p></div>
+                
+                
+                    {%if feed.plant_tags.all %}
+                    <div id="tags_container">
+                        {% for tag in feed.plant_tags.all %} 
+                            <a class="post_tags">{{tag}}</a> 
+                        {% endfor %}
+                    </div>    
                     {% endif %}
-    
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                
+                <br>
+                {% endfor %}
+                <hr>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+        
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+        
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
                     </span>
-    
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
+                </div>
             </div>
         </div>
 
         <div id="ScapeInfo" class="scape_tab" style="display: none;">
-            <div>
+            <div class="scape_tab_container">
                 <div id="common_boxs">
                     <div class="info_box">
                         <div class="box_name">Size </div>
@@ -134,7 +139,8 @@
 
         <div id="ScapeGallery" class="scape_tab" style="display: none;"></div>
         <br><br>
-
+    </div>
+    
         <script>
             function openTab(evt, tabName) {
               var i, scape_buttons;

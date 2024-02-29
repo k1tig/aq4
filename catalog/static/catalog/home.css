@@ -65,11 +65,12 @@ header a {
     color: var(--alt-highlight-color);
   }
 
-
+.scape_top{
+    margin: .3rem 1rem;
+}
 .title{
     color: var(--primary-color);
 }
-
 
 
 .scape_section{
@@ -101,7 +102,9 @@ header a {
 
 .scape_tab{
     margin: 1rem 2rem ;
+    max-width: 500px;    
 }
+
 
 
 /* Scape info */
@@ -200,14 +203,12 @@ header a {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    
     padding: .6rem .3rem;
     border-radius: 4px;
-
 }
 
 #tags_container span{
-    color: var(--primary-color));
+    color: var(--primary-color);
 }
 .post_tags{
     text-decoration: none;
