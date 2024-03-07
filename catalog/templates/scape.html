@@ -27,7 +27,7 @@
                     {%if feed.plant_tags.all %}
                     <div id="tags_container">
                         {% for tag in feed.plant_tags.all %} 
-                            <a class="post_tags">{{tag}}</a> 
+                            <a class="post_tags" href=" {% url 'tag_view' tag.pk %}">{{tag.name}}</a> 
                         {% endfor %}
                     </div>    
                     {% endif %}

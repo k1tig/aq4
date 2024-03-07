@@ -33,21 +33,7 @@ class ScapeListView(ListView):
     model = Scape
     template_name= "list_scape.html"
 
-def scapeview(request, pk):
-    scape = Scape.objects.get(id=pk)
-    feed = Entry.objects.filter(scape = pk)
-    
-    paginator = Paginator(feed, 3) 
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
 
-    context = {
-        'scape' : scape,
-        'feed' : feed,
-        'page_obj' : page_obj,
-    }
-
-    return render(request, 'scape.html', context)
 
 ###### Below: User Scapes page view
 
@@ -91,4 +77,33 @@ class UpdatePlantView(UpdateView):
     fields = "__all__"
     template_name = "update_plant.html"
     success_url = "/"
-        
+
+
+
+### not fixed 
+def tag_view(request, pk):
+    tag_returned = Plant.objects.get( id =  pk)
+
+    context = {
+        'tag' : tag_returned
+    }
+
+    return render(request, 'tag_view.html', context)   
+
+def scapeview(request, pk):
+    scape = Scape.objects.get(id=pk)
+    feed = Entry.objects.filter(scape = pk)
+    
+    paginator = Paginator(feed, 3) 
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'scape' : scape,
+        'feed' : feed,
+        'page_obj' : page_obj,
+    }
+
+    return render(request, 'scape.html', context)
+
+    

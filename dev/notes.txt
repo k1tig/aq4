@@ -1,0 +1,8 @@
+Adding a plant or equipment to a scape should automatically add a Tag / journal 
+entry for long term trackability of tags. This will prevent looking up tank 
+characteristics by tank description and remove the need to keep a list of item or
+plants that are no longer with the tank's current setup.
+
+
+Probably should create a business module that handles core fetching of model objects
+

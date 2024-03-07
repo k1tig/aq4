@@ -102,7 +102,7 @@ class Scape(models.Model):
     hardscape = models.ManyToManyField(TankHardscape, blank = True)
     fish = models.ManyToManyField(Fish, blank = True)
     invertebrate = models.ManyToManyField(Invertebrate, blank = True)
-    plants = models.ManyToManyField(Plant, related_name= "fucking_scape_id", blank = True)
+    plants = models.ManyToManyField(Plant, blank = True)
 
     def __str__(self):
         return self.scape_name

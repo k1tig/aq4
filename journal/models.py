@@ -10,3 +10,6 @@ class Entry(models.Model):
     post_date = models.DateTimeField(default=timezone.now)
     content = models.TextField(max_length=2000)
     plant_tags = models.ManyToManyField(Plant, blank=True)
+
+    def __str__(self):
+        return str(self.pk)
