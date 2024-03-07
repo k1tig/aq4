@@ -82,10 +82,13 @@ class UpdatePlantView(UpdateView):
 
 ### not fixed 
 def tag_view(request, pk):
-    tag_returned = Plant.objects.get( id =  pk)
+    tag= Plant.objects.get( id =  pk)
+    scape = tag.scape_set.all()
+
 
     context = {
-        'tag' : tag_returned
+        'tag' : tag,
+        'scape': scape,
     }
 
     return render(request, 'tag_view.html', context)   

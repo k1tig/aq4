@@ -2,10 +2,14 @@
 
 
     {% block content %}
-        <h1>Tag Owners</h1>
+        <h1>Scapes with {{tag}}</h1>
         
-        
-            {{tag}}
+        <ul>
+            {% for i in scape%}
+                <li> <a href="{% url 'scape_view' i.pk %}">{{i.scape_name}}</a></li>
+            {% endfor %}
+        </ul>
+       
 
         
         
