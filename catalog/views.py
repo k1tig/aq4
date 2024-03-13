@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect
-from catalog.forms import ScapeForm, PlantForm
+from catalog.forms import ScapeCreateForm, PlantForm
 from django.views.generic.edit import FormView, UpdateView
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.views import LoginView
@@ -10,6 +10,8 @@ from django.urls import reverse_lazy
 from catalog.models import Scape, Plant,Profile
 from journal.models import Entry
 from django.core.paginator import Paginator
+from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -47,6 +49,10 @@ def user_scapesView(request, pk):
     }
     return render(request, 'user_page.html', context)
 
+
+
+
+'''
 class AddScapeView(FormView):
     template_name = "add_scape.html"
     form_class = ScapeForm
@@ -55,14 +61,29 @@ class AddScapeView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-    
+'''
+
+class AddScapeView(LoginRequiredMixin ,CreateView):
+    model = Scape
+    form_class=ScapeCreateForm
+    success_url = reverse_lazy('home')
+    template_name = 'add_scape.html'
+
+    def get_form_kwargs(self):
+        kwargs = super(AddScapeView, self).get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
+
+
+
+
 class UpdateScapeView(UpdateView):
     model = Scape
     fields = "__all__"
     template_name = "update_scape.html"
     success_url = "/"
-
-    
+  
 class AddPlantView(FormView):
     template_name = "add_plant.html"
     form_class = PlantForm
@@ -109,4 +130,3 @@ def scapeview(request, pk):
 
     return render(request, 'scape.html', context)
 
-    
